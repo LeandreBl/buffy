@@ -15,7 +15,14 @@ SRCS		+= src/find.c
 				
 
 TESTS_SRCS	:= $(SRCS)
-TESTS_SRCS	+= tests/buffy_tests.c
+TESTS_SRCS	+= tests/create_tests.c
+TESTS_SRCS	+= tests/destroy_tests.c
+TESTS_SRCS	+= tests/clear_tests.c
+TESTS_SRCS	+= tests/resize_tests.c
+TESTS_SRCS	+= tests/write_tests.c
+TESTS_SRCS	+= tests/read_tests.c
+TESTS_SRCS	+= tests/peek_tests.c
+TESTS_SRCS	+= tests/find_tests.c
 
 OBJS		= $(SRCS:.c=.o)
 TESTS_OBJS	= $(TESTS_SRCS:.c=.o)
