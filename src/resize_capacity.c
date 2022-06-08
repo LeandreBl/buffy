@@ -17,6 +17,7 @@ int buffy_resize_capacity(struct buffy *buffy, size_t size)
         free(buffy->data);
         buffy->data = NULL;
         buffy->capacity = 0;
+        buffy->size = 0;
         return 0;
     }
     tmp = realloc(buffy->data, size);

@@ -1,5 +1,6 @@
 #include <errno.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "buffy.h"
 
 int buffy_create(struct buffy *buffy, size_t capacity, enum buffy_allocation_strategy flags)

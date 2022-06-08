@@ -136,4 +136,17 @@ ssize_t buffy_find(struct buffy *buffy, const void *data, size_t size) __nonnull
  */
 int buffy_resize_capacity(struct buffy *buffy, size_t size) __nonnull((1));
 
+/**
+ * \fn int buffy_discard(struct buffy *buffy, size_t size)
+ * \brief Function to discard data from a buffy.
+ * 
+ * \param buffy The buffy to discard from.
+ * \param size The number of bytes to discard.
+ * 
+ * \note This function is like buffy_read() but discards the data instead of reading it.
+ * 
+ * \return The number of bytes discarded.
+ */
+size_t buffy_discard(struct buffy *buffy, size_t size) __nonnull((1));
+
 #endif /* !BUFFY_H_ */

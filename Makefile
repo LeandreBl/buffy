@@ -7,22 +7,23 @@ ARCHIVER	= ar
 SRCS		= src/create.c
 SRCS		+= src/destroy.c
 SRCS		+= src/clear.c
-SRCS		+= src/resize.c
+SRCS		+= src/resize_capacity.c
 SRCS		+= src/write.c
 SRCS		+= src/read.c
 SRCS		+= src/peek.c
 SRCS		+= src/find.c
-				
+SRCS		+= src/discard.c
 
 TESTS_SRCS	:= $(SRCS)
 TESTS_SRCS	+= tests/create_tests.c
 TESTS_SRCS	+= tests/destroy_tests.c
 TESTS_SRCS	+= tests/clear_tests.c
-TESTS_SRCS	+= tests/resize_tests.c
+TESTS_SRCS	+= tests/resize_capacity_tests.c
 TESTS_SRCS	+= tests/write_tests.c
 TESTS_SRCS	+= tests/read_tests.c
 TESTS_SRCS	+= tests/peek_tests.c
 TESTS_SRCS	+= tests/find_tests.c
+TESTS_SRCS	+= tests/discard_tests.c
 
 OBJS		= $(SRCS:.c=.o)
 TESTS_OBJS	= $(TESTS_SRCS:.c=.o)

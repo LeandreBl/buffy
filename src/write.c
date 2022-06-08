@@ -11,7 +11,7 @@ ssize_t buffy_write(struct buffy *buffy, const void *data, size_t size)
                 size = buffy->capacity - buffy->size;
                 break;
             case BUFFY_DYNAMIC_SIZE_STRATEGY:
-                if (buffy_resize_capacity(buffy, buffy->capacity - buffy->size + size) == -1) {
+                if (buffy_resize_capacity(buffy, buffy->capacity + buffy->capacity - buffy->size + size) == -1) {
                     return -1;
                 }
                 break;
