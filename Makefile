@@ -47,7 +47,7 @@ NO_COLOR=`tput sgr0`
 dependencies:
 	$(MAKE) -C lvector
 
-all: $(NAME)
+all: dependencies $(NAME)
 
 $(NAME): $(OBJS)
 	@$ $(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
