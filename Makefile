@@ -31,7 +31,7 @@ TESTS_OBJS	= $(TESTS_SRCS:.c=.o)
 RM			= rm -f
 
 CFLAGS		+= -Wall -Wextra -fPIC -pedantic
-CPPFLAGS	+= -I ./include
+CPPFLAGS	+= -I ./include -I ./lvector/include
 LDFLAGS		= -shared
 
 GREEN=`tput setaf 2`
@@ -43,6 +43,9 @@ NO_COLOR=`tput sgr0`
 	@$ $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 	@echo "$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@ ["$(GREEN)"OK"$(NO_COLOR)"]"
 .SUFFIXES: .o .c
+
+dependencies:
+	$(MAKE) -C lvector
 
 all: $(NAME)
 
@@ -80,10 +83,11 @@ fclean: clean
 re: fclean all
 
 install: re
+	$(MAKE) -C lvector install
 	@cp $(NAME) /usr/lib/$(NAME) 2> /dev/null || \
 	printf "\033[1m\033[31mError : try sudo make install\033[0m\n" && \
 	cp include/buffy.h /usr/include/ 2> /dev/null && \
-	printf "\033[1m\033[32mLibrary successfull installed !\033[0m\n"
+	printf "\033[1m\033[32mLibrary $(NAME) successfully installed !\033[0m\n"
 
 static: $(OBJS)
 	$(ARCHIVER) rc $(NAME:.so=.a) $(OBJS)
