@@ -34,8 +34,10 @@ CFLAGS		+= -Wall -Wextra -fPIC -pedantic
 CPPFLAGS	+= -I ./include
 LDFLAGS		= -shared
 
-GREEN		= '\033[0;32m'
-NO_COLOR	= '\033[0m'
+GREEN=`tput setaf 2`
+RED=`tput setaf 1`
+YELLOW=`tput setaf 3`
+NO_COLOR=`tput sgr0`
 
 %.o : %.c
 	@$ $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
