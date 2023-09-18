@@ -1,0 +1,3 @@
+[submodule "lvector"]
+	path = lvector
+	url = git@github.com:LeandreBl/lvector.git
