@@ -44,10 +44,7 @@ NO_COLOR=`tput sgr0`
 	@echo "$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@ ["$(GREEN)"OK"$(NO_COLOR)"]"
 .SUFFIXES: .o .c
 
-dependencies:
-	$(MAKE) -C lvector
-
-all: dependencies $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$ $(CC) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
@@ -55,6 +52,7 @@ $(NAME): $(OBJS)
 	["$(GREEN)"LINKING OK"$(NO_COLOR)"]"
 
 tests_run: $(TESTS_OBJS)
+	git submodule foreach $@
 	@$ $(CC) -lcriterion $(TESTS_OBJS) $(LIBS) -o $@
 	@echo "$(CC) -lcriterion $(TESTS_OBJS) $(LIBS) -o $@ \
 	["$(GREEN)"LINKING OK"$(NO_COLOR)"]"
@@ -83,7 +81,7 @@ fclean: clean
 re: fclean all
 
 install: re
-	$(MAKE) -C lvector install
+	git submodule foreach make $@
 	@cp $(NAME) /usr/lib/$(NAME) 2> /dev/null || \
 	printf "\033[1m\033[31mError : try sudo make install\033[0m\n" && \
 	cp include/buffy.h /usr/include/ 2> /dev/null && \
