@@ -52,7 +52,7 @@ $(NAME): $(OBJS)
 	["$(GREEN)"LINKING OK"$(NO_COLOR)"]"
 
 tests_run: $(TESTS_OBJS)
-	git submodule foreach $@
+	git submodule foreach $(MAKE) $@
 	@$ $(CC) -lcriterion $(TESTS_OBJS) $(LIBS) -o $@
 	@echo "$(CC) -lcriterion $(TESTS_OBJS) $(LIBS) -o $@ \
 	["$(GREEN)"LINKING OK"$(NO_COLOR)"]"
@@ -81,7 +81,7 @@ fclean: clean
 re: fclean all
 
 install: all
-	git submodule foreach make $@
+	git submodule foreach $(MAKE) $@
 	@cp $(NAME) /usr/lib/$(NAME) 2> /dev/null || \
 	printf "\033[1m\033[31mError : try sudo make install\033[0m\n" && \
 	cp include/buffy.h /usr/include/ 2> /dev/null && \
